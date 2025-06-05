@@ -1,0 +1,16 @@
+apiVersion: s3.aws.crossplane.io/v1beta1
+kind: Bucket
+metadata:
+  name: my-crossplane-bucket
+spec:
+  forProvider:
+    region: ap-southeast-1
+    acl: private
+    locationConstraint: ap-southeast-1
+    versioning: true
+    serverSideEncryptionConfiguration:
+      rules:
+        - applyServerSideEncryptionByDefault:
+            sseAlgorithm: AES256
+  providerConfigRef:
+    name: aws-provider 
